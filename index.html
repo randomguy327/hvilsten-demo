@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vandrarhemmet Hvilsten — Litet, billigt, rent</title>
+  <meta name="description" content="Vandrarhemmet Hvilsten i Stora Mellösa — litet, billigt och rent sedan 2003. 225 kr per person och natt." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #3f5a42;
+      --accent-soft: #eef2ee;
+      --cream: #faf8f5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: #fff; }
+    .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.01em; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .btn-primary { background: var(--ink); color: #fff; transition: background .2s ease; }
+    .btn-primary:hover { background: #000; }
+    .btn-ghost { border: 1px solid rgba(255,255,255,.55); color: #fff; transition: background .2s ease; }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+    .link-underline { position: relative; }
+    .link-underline::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s ease; }
+    .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+    .fade-up { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .hero-text { text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+    .tab-btn[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+    .tab-btn { color: var(--muted); border-color: transparent; }
+    .gallery-panel { display: none; }
+    .gallery-panel.active { display: grid; }
+    .divider { height: 1px; background: var(--line); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Top bar -->
+  <div class="hidden md:block bg-[color:var(--cream)] border-b border-[color:var(--line)] text-xs text-gray-600">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <span class="inline-flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mällsavägen 13, 715 72 Stora Mellösa
+        </span>
+        <span class="inline-flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+          070-567 02 51
+        </span>
+        <span class="inline-flex items-center gap-2">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Leif@hvilsten.se
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="font-semibold text-gray-900">SV</span>
+        <span class="text-gray-300">/</span>
+        <a href="#" class="hover:text-gray-900">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-[color:var(--line)]">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-sm bg-[color:var(--ink)] text-white flex items-center justify-center font-display text-lg">H</div>
+        <div class="leading-none">
+          <div class="font-display text-xl">Hvilsten</div>
+          <div class="text-[10px] tracking-[0.25em] uppercase text-gray-500 mt-1">Vandrarhem</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-9 text-sm">
+        <a href="#om" class="link-underline">Om oss</a>
+        <a href="#rum" class="link-underline">Rum</a>
+        <a href="#faciliteter" class="link-underline">Faciliteter</a>
+        <a href="#naromradet" class="link-underline">Närområdet</a>
+        <a href="#galleri" class="link-underline">Galleri</a>
+        <a href="#priser" class="link-underline">Priser</a>
+        <a href="#kontakt" class="link-underline">Kontakt</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="tel:+46705670251" class="btn-primary text-sm px-5 py-2.5 rounded-sm">Ring för att boka</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-[color:var(--line)] rounded-sm" aria-label="Meny">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-[color:var(--line)] bg-white">
+      <nav class="px-6 py-4 flex flex-col gap-3 text-sm">
+        <a href="#om">Om oss</a>
+        <a href="#rum">Rum</a>
+        <a href="#faciliteter">Faciliteter</a>
+        <a href="#naromradet">Närområdet</a>
+        <a href="#galleri">Galleri</a>
+        <a href="#priser">Priser</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative min-h-[86vh] flex items-end">
+    <div class="absolute inset-0">
+      <img src="IMG_1132.jpg" alt="Framsidan av Hvilsten Vandrarhem" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/80"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+    </div>
+    <div class="relative z-10 w-full">
+      <div class="max-w-7xl mx-auto px-6 pb-20 pt-40 text-white hero-text">
+        <p class="eyebrow text-white/80 mb-5">Litet · Billigt · Rent</p>
+        <h1 class="font-display text-5xl md:text-7xl leading-[1.05] max-w-4xl">Ett lugnt boende<br/>nära allt du behöver.</h1>
+        <p class="mt-6 text-lg md:text-xl max-w-xl text-white/90">Vandrarhemmet Hvilsten i Stora Mellösa — enkelt, prisvärt och välkomnande sedan 2003.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="tel:+46705670251" class="bg-white text-[color:var(--ink)] px-6 py-3 rounded-sm text-sm font-medium hover:bg-gray-100 transition inline-flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+            Ring för att boka · 070-567 02 51
+          </a>
+          <a href="#rum" class="btn-ghost px-6 py-3 rounded-sm text-sm font-medium">Se våra rum</a>
+        </div>
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
+          <div class="border-t border-white/30 pt-4">
+            <div class="font-display text-3xl">5</div>
+            <div class="text-xs uppercase tracking-widest text-white/70 mt-1">Rum</div>
+          </div>
+          <div class="border-t border-white/30 pt-4">
+            <div class="font-display text-3xl">2003</div>
+            <div class="text-xs uppercase tracking-widest text-white/70 mt-1">Grundat</div>
+          </div>
+          <div class="border-t border-white/30 pt-4">
+            <div class="font-display text-3xl">225 kr</div>
+            <div class="text-xs uppercase tracking-widest text-white/70 mt-1">Per person / natt</div>
+          </div>
+          <div class="border-t border-white/30 pt-4">
+            <div class="font-display text-3xl">24/7</div>
+            <div class="text-xs uppercase tracking-widest text-white/70 mt-1">Tillgänglighet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 md:gap-6">
+        <div class="fade-up">
+          <div class="w-11 h-11 rounded-sm bg-[color:var(--accent-soft)] text-[color:var(--accent)] flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M12 11v4"/></svg>
+          </div>
+          <h3 class="font-medium mb-2">Fri parkering</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Gott om platser direkt utanför entrén — även för husbilar.</p>
+        </div>
+        <div class="fade-up">
+          <div class="w-11 h-11 rounded-sm bg-[color:var(--accent-soft)] text-[color:var(--accent)] flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+          </div>
+          <h3 class="font-medium mb-2">Gratis WiFi</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Snabb och stabil uppkoppling i hela huset — även i gemensamma utrymmen.</p>
+        </div>
+        <div class="fade-up">
+          <div class="w-11 h-11 rounded-sm bg-[color:var(--accent-soft)] text-[color:var(--accent)] flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="font-medium mb-2">Centralt läge</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Gångavstånd till [sevärdhet], [station] och närmsta naturområde.</p>
+        </div>
+        <div class="fade-up">
+          <div class="w-11 h-11 rounded-sm bg-[color:var(--accent-soft)] text-[color:var(--accent)] flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7h-8l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/></svg>
+          </div>
+          <h3 class="font-medium mb-2">Prisvärt boende</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Enkla, väl underhållna rum utan dolda avgifter. Boka direkt och spara.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider max-w-7xl mx-auto"></div>
+
+  <!-- Om oss -->
+  <section id="om" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+      <div class="relative fade-up">
+        <img src="IMG_1133.jpg" alt="Baksidan av Hvilsten Vandrarhem" class="w-full aspect-[4/5] object-cover rounded-sm" />
+        <div class="absolute -bottom-6 -right-6 hidden md:block bg-[color:var(--cream)] border border-[color:var(--line)] p-6 max-w-[240px]">
+          <div class="font-display text-3xl leading-none">Sedan 2003</div>
+          <p class="text-xs text-gray-600 mt-2">Gästfrihet och enkelhet i Stora Mellösa i över 20 år.</p>
+        </div>
+      </div>
+      <div class="fade-up">
+        <p class="eyebrow mb-4">Om Hvilsten</p>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Litet, billigt och rent.</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Vandrarhemmet Hvilsten startade den 3 maj 2003 och har drivits i samma anda ända sedan dess — ett enkelt, prisvärt och välskött boende där gästen alltid får en ren säng och ett lugn utanför fönstret.
+        </p>
+        <p class="text-gray-700 leading-relaxed mb-8">
+          Vi har fem rum och ett gemensamt kök, sällskapsrum och uteplats. Samma pris gäller för alla rum — 225 kr per person och natt. Perfekt för resenärer, familjer och grupper som söker något okomplicerat.
+        </p>
+        <div class="grid grid-cols-2 gap-6 mb-8">
+          <div class="border-l-2 border-[color:var(--accent)] pl-4">
+            <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Incheckning</div>
+            <div class="text-sm">15:00 – 21:00</div>
+          </div>
+          <div class="border-l-2 border-[color:var(--accent)] pl-4">
+            <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Utcheckning</div>
+            <div class="text-sm">Senast 12:00</div>
+          </div>
+          <div class="border-l-2 border-[color:var(--accent)] pl-4">
+            <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Antal rum</div>
+            <div class="text-sm">5 rum</div>
+          </div>
+          <div class="border-l-2 border-[color:var(--accent)] pl-4">
+            <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Betalning</div>
+            <div class="text-sm">Swish & kontanter</div>
+          </div>
+        </div>
+        <a href="#kontakt" class="inline-flex items-center gap-2 text-sm font-medium link-underline">
+          Läs mer om oss
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rum -->
+  <section id="rum" class="py-24 md:py-32 bg-[color:var(--cream)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-14">
+        <p class="eyebrow mb-4">Våra rum</p>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-4">Boende för varje resa.</h2>
+        <p class="text-gray-700 leading-relaxed">Från enkelrum för ensamresenärer till rymliga familjerum — alla med rena sängkläder, handdukar och tillgång till gemensamma utrymmen.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <article class="bg-white border border-[color:var(--line)] rounded-sm overflow-hidden group fade-up">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="IMG_1266.jpg" alt="Enkelrum" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="font-display text-xl">Enkelrum</h3>
+              <span class="text-sm text-gray-500">225 kr / natt</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Ett ostört rum med säng och läslampa. Passar ensamresenärer.</p>
+            <ul class="text-xs text-gray-500 space-y-1">
+              <li>• 1 bädd</li>
+              <li>• Delat badrum och toalett</li>
+              <li>• Gratis WiFi</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="bg-white border border-[color:var(--line)] rounded-sm overflow-hidden group fade-up">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="IMG_1273.jpg" alt="Dubbelrum" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="font-display text-xl">Dubbelrum</h3>
+              <span class="text-sm text-gray-500">225 kr / pers</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Rymligt rum för två — med två separata sängar.</p>
+            <ul class="text-xs text-gray-500 space-y-1">
+              <li>• 2 bäddar</li>
+              <li>• Delat badrum och toalett</li>
+              <li>• Gratis WiFi</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="bg-white border border-[color:var(--line)] rounded-sm overflow-hidden group fade-up">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="IMG_1270.jpg" alt="Familjerum" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="font-display text-xl">Familjerum</h3>
+              <span class="text-sm text-gray-500">225 kr / pers</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Plats för hela familjen — med flera sängar och gott om utrymme.</p>
+            <ul class="text-xs text-gray-500 space-y-1">
+              <li>• Flera bäddar</li>
+              <li>• Delat badrum och toalett</li>
+              <li>• Gratis WiFi</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="bg-white border border-[color:var(--line)] rounded-sm overflow-hidden group fade-up">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="IMG_1278.jpg" alt="Flerbäddsrum" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="font-display text-xl">Flerbäddsrum</h3>
+              <span class="text-sm text-gray-500">225 kr / pers</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">Våningssängar i gemensamt rum — perfekt för grupper och längre vistelser.</p>
+            <ul class="text-xs text-gray-500 space-y-1">
+              <li>• Flera bäddar</li>
+              <li>• Delat badrum och toalett</li>
+              <li>• Gratis WiFi</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Faciliteter -->
+  <section id="faciliteter" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-14 items-start">
+        <div class="md:col-span-1">
+          <p class="eyebrow mb-4">Faciliteter</p>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Allt som gör vistelsen enklare.</h2>
+          <p class="text-gray-700 leading-relaxed">Vi har det som behövs för både korta och långa vistelser — inget krångel, bara praktiska lösningar.</p>
+        </div>
+        <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8">
+          <!-- Feature item -->
+          <div class="flex flex-col gap-3">
+            <svg class="w-6 h-6 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <div>
+              <div class="text-sm font-medium">Gemensamt kök</div>
+              <div class="text-xs text-gray-500 mt-1">Fullt utrustat med spis, ugn och kylskåp.</div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <svg class="w-6 h-6 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div>
+              <div class="text-sm font-medium">Dygnet-runt-tillträde</div>
+              <div class="text-xs text-gray-500 mt-1">Egen nyckelkod — kom och gå som du vill.</div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <svg class="w-6 h-6 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><rect x="3" y="7" width="18" height="13" rx="2"/></svg>
+            <div>
+              <div class="text-sm font-medium">Tvättstuga</div>
+              <div class="text-xs text-gray-500 mt-1">Tvätt- och torkmaskin att boka.</div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <svg class="w-6 h-6 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
+            <div>
+              <div class="text-sm font-medium">Sällskapsrum</div>
+              <div class="text-xs text-gray-500 mt-1">Mjuka soffor, böcker och TV.</div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <svg class="w-6 h-6 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>
+            <div>
+              <div class="text-sm font-medium">Uteplats</div>
+              <div class="text-xs text-gray-500 mt-1">Trädgård med sittplatser utomhus.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Närområdet -->
+  <section id="naromradet" class="py-24 md:py-32 bg-[color:var(--cream)]">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+      <div class="fade-up order-2 md:order-1">
+        <p class="eyebrow mb-4">Närområdet</p>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Mycket att upptäcka<br/>runt hörnet.</h2>
+        <p class="text-gray-700 leading-relaxed mb-8">
+          Hvilsten ligger lugnt i Stora Mellösa — med både vardag och utflyktsmål inom räckhåll. Goda bussförbindelser gör det enkelt att ta sig vidare.
+        </p>
+
+        <div class="mb-6">
+          <div class="text-xs uppercase tracking-widest text-gray-500 mb-3">Gångavstånd</div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h18l-1.5 10a2 2 0 0 1-2 1.8H6.5a2 2 0 0 1-2-1.8L3 9Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">ICA</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">ca 100 m</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Närmsta livsmedelsbutik — för frukost, fika eller något gott till kvällen.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16M6 10v10M18 10v10M9 20v-5h6v5"/><path d="M4 10 6 4h12l2 6"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Lilla Thairestaurang</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">ca 100 m</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Trevlig thailändsk restaurang några steg bort — perfekt när du vill slippa laga själv.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Pizzeria</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">ca 300 m</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">En kort promenad bort för en enkel middag.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-8">
+          <div class="text-xs uppercase tracking-widest text-gray-500 mb-3">Utflyktsmål</div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20h20M4 20V8l8-4 8 4v12M8 20v-8h8v8"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Katrinelund restaurang & badplats</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">8 km</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Bra mat och en härlig badplats vid sjön — populärt sommartid.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/><path d="M12 5V2"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Göksholms slott</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">8 km</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Ett av Sveriges äldsta bebodda slott — ett stenkast från hostelet.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 18c3-1 5-3 8-3s5 2 8 3 4-1 4-1M2 13c3-1 5-3 8-3s5 2 8 3 4-1 4-1"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Engelbrektsudden</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">1 mil</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Naturskön udde vid Hjälmaren — perfekt för en dags utflykt.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-sm bg-white border border-[color:var(--line)] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M8 19v2M16 19v2"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-3">
+                  <span class="font-medium">Buss linje 800</span>
+                  <span class="text-xs text-gray-500 uppercase tracking-widest">Länstrafik</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-1">Goda bussförbindelser med länstrafiken rakt från Stora Mellösa.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <a href="#kontakt" class="inline-flex items-center gap-2 text-sm font-medium link-underline">
+          Frågor om området? Kontakta oss
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="relative fade-up order-1 md:order-2">
+        <img src="IMG_1134.jpg" alt="Utsikt från Hvilsten mot närområdet" class="w-full aspect-[4/5] object-cover rounded-sm" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Galleri -->
+  <section id="galleri" class="py-24 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-6">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-4">Galleri</p>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight">Ett smakprov av miljön.</h2>
+        </div>
+        <div class="flex gap-2 border-b border-[color:var(--line)]" role="tablist">
+          <button class="tab-btn px-4 py-2 text-sm border-b-2 -mb-px" data-tab="all" aria-selected="true">Alla</button>
+          <button class="tab-btn px-4 py-2 text-sm border-b-2 -mb-px" data-tab="rum" aria-selected="false">Rum</button>
+          <button class="tab-btn px-4 py-2 text-sm border-b-2 -mb-px" data-tab="gemensamma" aria-selected="false">Gemensamma</button>
+          <button class="tab-btn px-4 py-2 text-sm border-b-2 -mb-px" data-tab="utsida" aria-selected="false">Utsida</button>
+        </div>
+      </div>
+
+      <div class="gallery-panel active grid-cols-2 md:grid-cols-4 gap-3" data-panel="all">
+        <img src="IMG_1132.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Framsidan" />
+        <img src="IMG_1133.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Baksidan" />
+        <img src="IMG_1134.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Närområdet" />
+        <img src="IMG_1274.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Sällskapsrum" />
+        <img src="IMG_1266.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Enkelrum" />
+        <img src="IMG_1273.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Dubbelrum" />
+        <img src="IMG_1278.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Flerbäddsrum" />
+        <img src="IMG_1267.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Kök" />
+      </div>
+
+      <div class="gallery-panel grid-cols-2 md:grid-cols-4 gap-3" data-panel="rum">
+        <img src="IMG_1266.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Enkelrum" />
+        <img src="IMG_1272.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Enkelrum" />
+        <img src="IMG_1269.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Enkelrum" />
+        <img src="IMG_1273.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Dubbelrum" />
+        <img src="IMG_1270.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Familjerum" />
+        <img src="IMG_1277.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Familjerum" />
+        <img src="IMG_1278.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Flerbäddsrum" />
+        <img src="IMG_1279.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Flerbäddsrum" />
+      </div>
+
+      <div class="gallery-panel grid-cols-2 md:grid-cols-4 gap-3" data-panel="gemensamma">
+        <img src="IMG_1274.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Sällskapsrum" />
+        <img src="IMG_1275.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Sällskapsrum" />
+        <img src="IMG_1267.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Kök" />
+        <img src="IMG_1268.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Kök" />
+        <img src="IMG_1271.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Pentry" />
+        <img src="IMG_1276.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Badrum" />
+      </div>
+
+      <div class="gallery-panel grid-cols-2 md:grid-cols-4 gap-3" data-panel="utsida">
+        <img src="IMG_1132.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Framsidan" />
+        <img src="IMG_1133.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Baksidan" />
+        <img src="IMG_1134.jpg" class="aspect-square w-full object-cover rounded-sm" alt="Närområdet" />
+        <div class="aspect-square w-full bg-white border border-[color:var(--line)] rounded-sm flex items-center justify-center text-gray-400"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.5"/><path d="m3 17 5-4 4 3 4-5 5 6"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Priser & Bokning -->
+  <section id="priser" class="py-24 md:py-32 bg-[color:var(--cream)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <p class="eyebrow mb-4">Priser & Bokning</p>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-4">Så enkelt är det att boka.</h2>
+        <p class="text-gray-700 leading-relaxed"><span class="font-display text-2xl text-[color:var(--ink)]">225 kr</span> per person och natt. Samma pris oavsett rum.</p>
+      </div>
+
+      <!-- Three steps -->
+      <div class="max-w-5xl mx-auto mb-10">
+        <div class="grid md:grid-cols-3 gap-px bg-[color:var(--line)] border border-[color:var(--line)] rounded-sm overflow-hidden">
+          <div class="bg-white p-8">
+            <div class="font-display text-5xl text-[color:var(--accent)] mb-3">1</div>
+            <h3 class="font-display text-xl mb-2">Ring Leif</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">Berätta när ni vill komma och hur många ni är. Leif bekräftar direkt om det finns plats.</p>
+            <a href="tel:+46705670251" class="inline-flex items-center gap-2 text-sm font-medium link-underline">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+              070-567 02 51
+            </a>
+          </div>
+          <div class="bg-white p-8">
+            <div class="font-display text-5xl text-[color:var(--accent)] mb-3">2</div>
+            <h3 class="font-display text-xl mb-2">Betala med Swish</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">När bokningen är bekräftad swishar du totalbeloppet — se summan i kalkylatorn nedan.</p>
+            <span class="inline-flex items-center justify-center bg-[#EE2A7B] text-white font-bold px-3 py-1.5 rounded-md text-xs tracking-wide">Swish</span>
+          </div>
+          <div class="bg-white p-8">
+            <div class="font-display text-5xl text-[color:var(--accent)] mb-3">3</div>
+            <h3 class="font-display text-xl mb-2">Kom och checka in</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Incheckning mellan 15:00 och 21:00. Utcheckning senast 12:00 dagen därpå.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+        <!-- Calculator (estimator) -->
+        <div class="bg-white border border-[color:var(--line)] rounded-sm p-8 md:p-10">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-sm bg-[color:var(--accent-soft)] text-[color:var(--accent)] flex items-center justify-center">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+            </div>
+            <h3 class="font-display text-2xl">Prisuppskattning</h3>
+          </div>
+          <p class="text-xs text-gray-500 mb-6">Ett snabbt estimat — slutgiltigt pris bekräftas när du ringer.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="text-xs uppercase tracking-widest text-gray-500 block mb-2">Antal personer</label>
+              <div class="flex items-center border border-[color:var(--line)] rounded-sm">
+                <button type="button" data-step="guests" data-delta="-1" class="w-12 h-12 text-xl hover:bg-gray-50 transition">−</button>
+                <input id="guests" type="number" min="1" max="20" value="2" class="flex-1 text-center text-lg bg-transparent focus:outline-none appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" />
+                <button type="button" data-step="guests" data-delta="1" class="w-12 h-12 text-xl hover:bg-gray-50 transition">+</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs uppercase tracking-widest text-gray-500 block mb-2">Antal nätter</label>
+              <div class="flex items-center border border-[color:var(--line)] rounded-sm">
+                <button type="button" data-step="nights" data-delta="-1" class="w-12 h-12 text-xl hover:bg-gray-50 transition">−</button>
+                <input id="nights" type="number" min="1" max="60" value="1" class="flex-1 text-center text-lg bg-transparent focus:outline-none appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" />
+                <button type="button" data-step="nights" data-delta="1" class="w-12 h-12 text-xl hover:bg-gray-50 transition">+</button>
+              </div>
+            </div>
+
+            <div class="pt-5 border-t border-[color:var(--line)]">
+              <div class="flex items-center justify-between text-sm text-gray-500 mb-2">
+                <span id="calcBreakdown">2 pers. × 1 natt × 225 kr</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs uppercase tracking-widest text-gray-500">Uppskattad summa</span>
+                <span class="font-display text-4xl"><span id="calcTotal">450</span> kr</span>
+              </div>
+            </div>
+
+            <a href="tel:+46705670251" class="btn-primary flex items-center justify-center gap-2 text-sm px-5 py-3 rounded-sm mt-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+              Ring för att boka
+            </a>
+          </div>
+        </div>
+
+        <!-- Swish -->
+        <div class="bg-white border border-[color:var(--line)] rounded-sm p-8 md:p-10 flex flex-col">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="inline-flex items-center justify-center bg-[#EE2A7B] text-white font-bold px-3 py-1.5 rounded-md text-sm tracking-wide">Swish</div>
+            <h3 class="font-display text-2xl">Efter bekräftelse</h3>
+          </div>
+          <p class="text-xs text-gray-500 mb-6">Swisha först när Leif bekräftat din bokning per telefon.</p>
+
+          <div class="grid grid-cols-2 gap-6 items-center mb-6">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-gray-500 mb-2">Swish-nummer</div>
+              <div class="font-display text-2xl leading-tight select-all">070-567 02 51</div>
+
+              <div class="mt-5">
+                <div class="text-xs uppercase tracking-widest text-gray-500 mb-2">Mottagare</div>
+                <div class="text-sm">Vandrarhemmet Hvilsten</div>
+              </div>
+
+              <div class="mt-5">
+                <div class="text-xs uppercase tracking-widest text-gray-500 mb-2">Meddelande</div>
+                <div class="text-sm text-gray-600">Namn + datum</div>
+              </div>
+            </div>
+
+            <!-- QR placeholder -->
+            <div class="aspect-square bg-[color:var(--cream)] border border-[color:var(--line)] rounded-sm p-4 relative">
+              <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[color:var(--ink)]"></div>
+              <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[color:var(--ink)]"></div>
+              <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[color:var(--ink)]"></div>
+              <div class="w-full h-full flex flex-col items-center justify-center text-gray-400">
+                <svg class="w-10 h-10 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14h1v1h-1zM14 20h1v1h-1zM17 17h4v4h-4z"/></svg>
+                <span class="text-[10px] uppercase tracking-widest">Swish QR</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-5 border-t border-[color:var(--line)] text-xs text-gray-500 leading-relaxed">
+            Scanna QR-koden så öppnas Swish med rätt mottagare ifylld. Vi tar även emot kontanter vid ankomst.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="bg-[color:var(--ink)] text-white py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-20">
+      <div>
+        <p class="eyebrow mb-4 text-white/70">Kontakt</p>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Hör av dig — vi svarar gärna.</h2>
+        <p class="text-white/80 leading-relaxed mb-6 max-w-md">För bokning: <a href="tel:+46705670251" class="underline underline-offset-4 hover:text-white">ring 070-567 02 51</a>. För övriga frågor — mejla, använd formuläret eller ring.</p>
+        <a href="tel:+46705670251" class="inline-flex items-center gap-3 bg-white text-[color:var(--ink)] px-5 py-3 rounded-sm text-sm font-medium hover:bg-gray-100 transition mb-10">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+          Ring 070-567 02 51
+        </a>
+
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest text-white/60 mb-1">Adress</div>
+              <div class="text-sm">Mällsavägen 13<br/>715 72 Stora Mellösa</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest text-white/60 mb-1">Telefon</div>
+              <div class="text-sm">070-567 02 51</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest text-white/60 mb-1">E-post</div>
+              <div class="text-sm">Leif@hvilsten.se</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest text-white/60 mb-1">Tider</div>
+              <div class="text-sm">Incheckning 15:00 – 21:00<br/>Utcheckning senast 12:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="bg-white/5 border border-white/10 p-8 rounded-sm space-y-5">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs uppercase tracking-widest text-white/60 block mb-2">Namn</label>
+            <input type="text" class="w-full bg-transparent border-b border-white/30 pb-2 text-sm focus:outline-none focus:border-white" placeholder="Ditt namn" />
+          </div>
+          <div>
+            <label class="text-xs uppercase tracking-widest text-white/60 block mb-2">E-post</label>
+            <input type="email" class="w-full bg-transparent border-b border-white/30 pb-2 text-sm focus:outline-none focus:border-white" placeholder="din@epost.se" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-widest text-white/60 block mb-2">Ämne</label>
+          <input type="text" class="w-full bg-transparent border-b border-white/30 pb-2 text-sm focus:outline-none focus:border-white" placeholder="Gruppbokning, fråga, annat…" />
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-widest text-white/60 block mb-2">Meddelande</label>
+          <textarea rows="4" class="w-full bg-transparent border-b border-white/30 pb-2 text-sm focus:outline-none focus:border-white resize-none" placeholder="Skriv ditt meddelande…"></textarea>
+        </div>
+        <button type="button" class="w-full bg-white text-[color:var(--ink)] py-3 rounded-sm text-sm font-medium hover:bg-gray-100 transition">
+          Skicka meddelande
+        </button>
+        <p class="text-xs text-white/50 text-center">Vi återkommer vanligtvis inom 24 timmar.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[color:var(--ink)] text-white/70 border-t border-white/10 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-sm bg-white text-[color:var(--ink)] flex items-center justify-center font-display">H</div>
+        <span>© 2026 Vandrarhemmet Hvilsten. Alla rättigheter förbehållna.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white">Integritetspolicy</a>
+        <a href="#" class="hover:text-white">Villkor</a>
+        <a href="#" class="hover:text-white">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Gallery tabs
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.gallery-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        tab.setAttribute('aria-selected', 'true');
+        const target = tab.dataset.tab;
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+      });
+    });
+
+    // Fade-up on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // Price calculator
+    const PRICE_PER_PERSON_NIGHT = 225;
+    const guestsEl = document.getElementById('guests');
+    const nightsEl = document.getElementById('nights');
+    const totalEl = document.getElementById('calcTotal');
+    const breakdownEl = document.getElementById('calcBreakdown');
+    const nf = new Intl.NumberFormat('sv-SE');
+
+    function clamp(el) {
+      const min = parseInt(el.min || '1', 10);
+      const max = parseInt(el.max || '99', 10);
+      let v = parseInt(el.value, 10);
+      if (isNaN(v)) v = min;
+      v = Math.max(min, Math.min(max, v));
+      el.value = v;
+      return v;
+    }
+
+    function updateCalc() {
+      const g = clamp(guestsEl);
+      const n = clamp(nightsEl);
+      const total = g * n * PRICE_PER_PERSON_NIGHT;
+      totalEl.textContent = nf.format(total);
+      breakdownEl.textContent = `${g} ${g === 1 ? 'pers.' : 'pers.'} × ${n} ${n === 1 ? 'natt' : 'nätter'} × ${PRICE_PER_PERSON_NIGHT} kr`;
+    }
+
+    document.querySelectorAll('[data-step]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.step);
+        target.value = parseInt(target.value || '0', 10) + parseInt(btn.dataset.delta, 10);
+        updateCalc();
+      });
+    });
+    [guestsEl, nightsEl].forEach(el => el.addEventListener('input', updateCalc));
+    updateCalc();
+  </script>
+</body>
+</html>

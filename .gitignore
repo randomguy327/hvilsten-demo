@@ -1,0 +1,12 @@
+# HEIC originals — not used by the site, jpg versions are committed instead
+*.heic
+Download 2026-*/
+
+# Random files
+*.exe
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
