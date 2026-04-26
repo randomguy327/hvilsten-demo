@@ -546,7 +546,7 @@
         <p class="eyebrow mb-4">Priser & Bokning</p>
         <h2 class="font-display text-4xl md:text-5xl leading-tight mb-4">Så enkelt är det att boka.</h2>
         <p class="text-gray-700 leading-relaxed"><span class="font-display text-2xl text-[color:var(--ink)]">225 kr</span> per person och natt. Samma pris oavsett rum.</p>
-        <p class="text-sm text-gray-500 mt-2">Lakan 100 kr/person om du inte tar med egna.</p>
+        <p class="text-sm text-gray-500 mt-2">Lakan & handduk 100 kr/person om du inte tar med egna.</p>
       </div>
 
       <!-- Three steps -->
@@ -609,7 +609,7 @@
             <label for="linens" class="flex items-start gap-3 cursor-pointer select-none">
               <input id="linens" type="checkbox" class="mt-0.5 w-4 h-4 accent-[color:var(--accent)]" />
               <span class="text-sm">
-                Lakan behövs <span class="text-gray-500">(+100 kr/person)</span>
+                Lakan & handduk behövs <span class="text-gray-500">(+100 kr/person)</span>
                 <span class="block text-xs text-gray-500 mt-0.5">Ta med egna för att spara.</span>
               </span>
             </label>
@@ -787,7 +787,7 @@
       totalEl.textContent = nf.format(total);
       const base = `${g} pers. × ${n} ${n === 1 ? 'natt' : 'nätter'} × ${PRICE_PER_PERSON_NIGHT} kr`;
       breakdownEl.textContent = needsLinens
-        ? `${base} + lakan ${g} × 100 kr`
+        ? `${base} + lakan & handduk ${g} × 100 kr`
         : base;
     }
 
