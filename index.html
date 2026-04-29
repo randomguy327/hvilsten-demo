@@ -896,12 +896,11 @@
     [guestsEl, nightsEl].forEach(el => el.addEventListener('input', updateCalc));
     linensEl?.addEventListener('change', updateCalc);
 
-    // Initial language: localStorage > browser preference > sv
+    // Initial language: always default to Swedish, only switch if user has chosen EN before
     let initialLang = 'sv';
     try {
       const saved = localStorage.getItem('hvilsten-lang');
       if (saved === 'sv' || saved === 'en') initialLang = saved;
-      else if ((navigator.language || '').toLowerCase().startsWith('en')) initialLang = 'en';
     } catch (e) {}
     setLang(initialLang);
   </script>
